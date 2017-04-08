@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.rizwanmahmood.morsekeyboard.MorseKeyboardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/keyboard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:keyBackground="@drawable/tap_key"
+    android:background="@color/slateGrey"
+    android:keyPreviewLayout ="@layout/preview"
+    android:padding="5dp"
+    android:labelTextSize="0dp"
+    >
+
+</com.rizwanmahmood.morsekeyboard.MorseKeyboardView>
