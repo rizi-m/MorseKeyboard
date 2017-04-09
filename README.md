@@ -1,5 +1,5 @@
  
- Morse Code Keyboard  ![Logo](https://lh5.googleusercontent.com/6Xy54Sv000E9aIxnkrXwszoFShekCopmZPvLovkPIPq7ZK6C67XHupvD8fsL5tDG9Zd549sCOY_PgI8=w2880-h1552)
+ Morse Code Keyboard  ![Logo](https://lh3.googleusercontent.com/dNkYd6w-zg_Ihe2sEOmxfgYheLMnv0WP7H3GaEMyzfzjOABywgj-6yfufaSiWFKYRsB_UZfay7fOiNI=w2880-h1552)
 ===================
 A simple keyboard which emulates a Telegraph allowing users to type in Morse code.
 
