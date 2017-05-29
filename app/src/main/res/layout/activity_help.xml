@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.rizwanmahmood.morsekeyboard.activities.HelpActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/help_textview_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/help_textview_string_title"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/help_title_size" />
+
+            <TextView
+                android:id="@+id/help_textview_goto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Go to settings"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/help_text_size" />
+
+            <ImageView
+                android:id="@+id/help_img_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:padding="@dimen/help_image_padding"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/screenshot_settings" />
+
+            <TextView
+                android:id="@+id/help_textview_language"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Scroll to 'Languages and Input'"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/help_text_size" />
+
+            <ImageView
+                android:id="@+id/help_img_languages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:padding="@dimen/help_image_padding"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/screenshot_languages" />
+
+            <TextView
+                android:id="@+id/help_txt_virtual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Choose 'Virtual Keyboard'"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/help_text_size" />
+
+            <ImageView
+                android:id="@+id/help_img_virtual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:padding="@dimen/help_image_padding"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/screenshot_virtual" />
+
+            <TextView
+                android:id="@+id/help_txt_manage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Tap 'Manage Keyboards'"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/help_text_size" />
+
+            <ImageView
+                android:id="@+id/help_img_manage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:padding="@dimen/help_image_padding"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/screenshot_manage" />
+
+            <TextView
+                android:id="@+id/help_txt_enable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enable the keyboard and you're ready to go!"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/help_text_size" />
+
+            <TextView
+                android:id="@+id/help_txt_using"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Using the keyboard!"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/help_title_size" />
+
+            <ImageView
+                android:id="@+id/help_img_choose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:padding="@dimen/help_image_padding"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/screenshot_choose" />
+
+            <TextView
+                android:id="@+id/help_txt_choose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="Press and hold the spacerbar on your keyboard and choose 'Morse Code'!"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/help_text_size" />
+
+            <ImageView
+                android:id="@+id/help_img_preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:padding="@dimen/help_image_padding"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/screenshot_preview" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
