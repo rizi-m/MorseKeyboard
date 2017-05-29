@@ -24,11 +24,11 @@ public class MorseKeyboardView extends KeyboardView {
         super.onDraw(canvas);
         Paint paint = new Paint();
         paint.setTextAlign(Paint.Align.CENTER);
-        paint.setColor(Color.parseColor("#80d8ff"));
+        paint.setColor(Color.parseColor("#00aef8"));
         List<Keyboard.Key> keys = getKeyboard().getKeys();
         for(Keyboard.Key key: keys) {
             if(key.label != null) {
-                float textSize = 30;
+                float textSize = 40;
                 paint.setTextSize(textSize);
                 canvas.drawText(key.label.toString(), key.x + (key.width/2) + (textSize/2), key.y + (textSize) + (key.height/2), paint);
             }
