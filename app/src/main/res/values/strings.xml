@@ -3,7 +3,7 @@
     <string name="morse_keyboard">Morse Keyboard</string>
     <string name="subtype_en_US">Morse Code</string>
     <string name="button">Button</string>
-    <string name="main_button_string_learn">Learn</string>
+    <string name="main_button_string_practice">Practice</string>
     <string name="main_button_string_help">Help</string>
     <string name="help_textview_string_title">Setting up!</string>
 </resources>

@@ -8,17 +8,17 @@
     tools:context="com.rizwanmahmood.morsekeyboard.MainActivity">
 
     <Button
-        android:id="@+id/main_btn_learn"
+        android:id="@+id/main_btn_practice"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/tap_key"
+        android:text="@string/main_button_string_practice"
+        android:textColor="@color/blueAccent"
         android:layout_above="@+id/main_btn_help"
         android:layout_alignLeft="@+id/main_btn_help"
-        android:layout_alignStart="@+id/main_btn_help"
-        android:layout_marginBottom="49dp"
-        android:background="@drawable/tap_key"
-        android:text="@string/main_button_string_learn"
-        android:textColor="@color/blueAccent" />
+        android:layout_alignStart="@+id/main_btn_help" />
 
     <Button
         android:id="@+id/main_btn_help"

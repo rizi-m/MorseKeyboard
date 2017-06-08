@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.rizwanmahmood.morsekeyboard.activities.LevelActivity"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/level_textview_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:padding="@dimen/general_padding"
+        android:text="Word to type"
+        android:textAlignment="center"
+        android:textSize="@dimen/level_text_textsize"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/level_editText_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@drawable/general_edittext"
+        android:ems="10"
+        android:hint="Enter here"
+        android:inputType="textPersonName"
+        android:padding="@dimen/general_padding" />
+
+    <Button
+        android:id="@+id/level_button_hinttoggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@drawable/level_button_hinttoggle"
+        android:text="Show Hint"
+        android:textColor="@color/blueAccent" />
+
+    <TextView
+        android:id="@+id/level_textview_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="-2dp"
+        android:background="@drawable/level_edittext_hint"
+        android:maxLines="4"
+        android:padding="@dimen/general_padding"
+        android:scrollbars="vertical"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/level_hint_textsize"
+        android:textStyle="bold"
+        android:visibility="gone" />
+</LinearLayout>

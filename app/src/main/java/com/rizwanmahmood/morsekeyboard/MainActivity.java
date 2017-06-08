@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.rizwanmahmood.morsekeyboard.activities.HelpActivity;
+import com.rizwanmahmood.morsekeyboard.activities.LevelsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnHelp;
+    Button btnLearn;
+    Button btnPractice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +24,19 @@ public class MainActivity extends AppCompatActivity {
 
     //setup everything needed... event etc.
     private void setup() {
-        btnHelp.setOnClickListener(new View.OnClickListener() {
+
+        btnLearn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(btnHelp.getContext(), HelpActivity.class);
+                Intent intent = new Intent(btnLearn.getContext(), LevelsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnPractice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(btnPractice.getContext(), HelpActivity.class);
                 startActivity(intent);
             }
         });
@@ -33,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     //initialise all the items
     private void initialise() {
-        btnHelp = (Button) findViewById(R.id.main_btn_help);
+        btnLearn = (Button) findViewById(R.id.main_btn_practice);
+        btnPractice = (Button) findViewById(R.id.main_btn_help);
     }
 }
