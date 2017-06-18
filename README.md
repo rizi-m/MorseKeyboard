@@ -1,7 +1,7 @@
 
  Morse Code Keyboard   ![Logo](http://i.imgur.com/yy2uZey.png)
 ===================
-A simple keyboard which emulates a Telegraph allowing users to type and learn Morse code.
+A simple keyboard which emulates a Telegraph allowing users to type and practice Morse code.
 
 
 ![Usage Screenshot](http://i.imgur.com/L7BD2Qs.png)
