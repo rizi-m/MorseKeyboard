@@ -1,59 +1,83 @@
 package com.rizwanmahmood.morsekeyboard.activities;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.app.FragmentManager;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rizwanmahmood.morsekeyboard.R;
-import com.rizwanmahmood.morsekeyboard.model.Problem;
-import com.rizwanmahmood.morsekeyboard.model.ProblemGenerator;
+import com.rizwanmahmood.morsekeyboard.fragments.LevelEndFragment;
+import com.rizwanmahmood.morsekeyboard.problem.Problem;
+import com.rizwanmahmood.morsekeyboard.problem.ProblemGenerator;
+import com.rizwanmahmood.morsekeyboard.scoredatabase.Score;
+import com.rizwanmahmood.morsekeyboard.scoredatabase.ScoreDBHandler;
 
-public class LevelActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class LevelActivity extends AppCompatActivity implements LevelEndFragment.Resetter{
 
     private int level;
-    private Problem problem;
+    private ArrayList<Problem> problems;
+    private boolean hintEnabled;
+    private int questionCount;
+    private int questionNo;
+    private int penaltyCount;
+    private boolean givenPenalty;
+    private boolean solved;
 
-    private TextView problemTextView;
     private EditText input;
+    private TextView problemTextView;
+    private TextView questionsTextView;
     private TextView hintTextView;
+    private TextView levelTextView;
     private Button toggleHintButton;
+    private ImageButton nextImageButton;
 
-    private Animation hintAnimationShow;
-    private Animation hintAnimationHide;
+    private Animation showFadeAnimation;
+    private Animation hideFadeAnimation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level);
-        init();
+        initialise();
         setup();
     }
 
-    private void init() {
+    private void initialise() {
         level = Integer.parseInt( getIntent().getStringExtra("level") );
-        problemTextView = (TextView) findViewById( R.id.level_textview_text);
+        givenPenalty = false;
+        solved = false;
+        hintEnabled = !(level == 2);
+        questionNo = 0;
+        penaltyCount = 0;
+        questionCount = 20;
         input = (EditText) findViewById( R.id.level_editText_input );
+        problemTextView = (TextView) findViewById( R.id.level_textview_text);
         hintTextView = (TextView) findViewById( R.id.level_textview_hint );
+        questionsTextView = (TextView) findViewById( R.id.level_textview_questions );
+        levelTextView = (TextView) findViewById( R.id.levelend_textview_level);
         toggleHintButton = (Button) findViewById( R.id.level_button_hinttoggle );
-        hintAnimationHide = AnimationUtils.loadAnimation(this, R.anim.level_hide_hint);
-        hintAnimationShow = AnimationUtils.loadAnimation(this, R.anim.level_show_hint);
+        hideFadeAnimation = AnimationUtils.loadAnimation(this, R.anim.level_hide_fade);
+        showFadeAnimation = AnimationUtils.loadAnimation(this, R.anim.level_show_fade);
+        nextImageButton = (ImageButton) findViewById( R.id.level_imagebutton_next );
     }
 
     private void setup() {
+
+
         input.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -62,14 +86,14 @@ public class LevelActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() == problem.getWord().length()+1) {
+                if(s.length() == problems.get( questionNo ).getWord().length()+1) {
                     s = s.subSequence(1, s.length());
                 }
                 if(isSolved( String.valueOf(s) )) {
-                    //Display congratulations for now
+                    //Display congratulations
                     showCongratulations();
-                    resetInput();
-                    loadProblem();
+                    //Show next button
+                    showNextButton();
                 }
             }
 
@@ -81,22 +105,117 @@ public class LevelActivity extends AppCompatActivity {
 
         hintTextView.setMovementMethod(new ScrollingMovementMethod());
 
+        questionsTextView.setText(questionNo + 1 + "/" + questionCount);
+
+        toggleHintButton.setEnabled(hintEnabled);
         toggleHintButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isHintVisible()) {
-                    hintTextView.setVisibility(View.GONE);
-                    hintTextView.startAnimation(hintAnimationHide);
-                    toggleHintButton.setText("Show Hint");
-                } else {
-                    hintTextView.startAnimation( hintAnimationShow );
-                    hintTextView.setVisibility(View.VISIBLE);
-                    toggleHintButton.setText("Hide Hint");
-                }
+                toggleHint();
             }
         });
 
         loadProblem();
+        nextImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if( isHintVisible() ) {
+                    toggleHint();
+                }
+                hideNextButton();
+                resetInput();
+                nextProblem();
+                givenPenalty = false;
+            }
+        });
+
+        nextImageButton.setVisibility(View.INVISIBLE);
+
+        levelTextView.setText("Level " + level);
+
+    }
+
+    public void reset() {
+        questionNo = 0;
+        givenPenalty = false;
+        solved = false;
+
+        questionsTextView.setText(questionNo + 1 + "/" + questionCount);
+
+        loadProblem();
+
+        nextImageButton.setVisibility(View.INVISIBLE);
+        levelTextView.setText("Level " + level);
+
+    }
+
+    private void toggleHint() {
+        if(isHintVisible() || (isHintVisible() && givenPenalty)) {
+            hintTextView.setVisibility(View.GONE);
+            hintTextView.startAnimation(hideFadeAnimation);
+            toggleHintButton.setText("Show Hint");
+        } else {
+            hintTextView.startAnimation(showFadeAnimation);
+            hintTextView.setVisibility(View.VISIBLE);
+            toggleHintButton.setText("Hide Hint");
+            if(!givenPenalty && !solved) {
+                givenPenalty = true;
+                penaltyCount++;
+            }
+        }
+    }
+
+    private void nextProblem() {
+        ++questionNo;
+        if( questionNo < questionCount ) {
+            problemTextView.setText( problems.get( questionNo ).getWord() );
+            questionsTextView.setText(questionNo + 1 + "/" + questionCount);
+            setHint();
+        } else {
+            finishLevel();
+        }
+    }
+
+    private void finishLevel() {
+        String highScore = getHighScore();
+        saveScoreToDatabase();
+        FragmentManager fragmentManager = getFragmentManager();
+        LevelEndFragment fragment = new LevelEndFragment();
+        Bundle bundle = new Bundle();
+
+        bundle.putString("score", "" + getScore());
+        bundle.putString("highscore", highScore);
+
+        fragment.setArguments(bundle);
+        fragment.show(fragmentManager, "LevelEnd");
+    }
+
+    private int getScore() {
+        return questionCount - penaltyCount;
+    }
+
+    private String getHighScore() {
+        ScoreDBHandler db = new ScoreDBHandler(this);
+        return db.getHighScoreForLevel(level);
+    }
+
+    private void saveScoreToDatabase() {
+        ScoreDBHandler db = new ScoreDBHandler(this);
+        Score score = new Score(level, getScore());
+        db.addScore(score);
+        db.close();
+    }
+
+    private void showNextButton() {
+        nextImageButton.setEnabled(true);
+        nextImageButton.startAnimation(showFadeAnimation);
+        nextImageButton.setVisibility(View.VISIBLE);
+    }
+
+    private void hideNextButton() {
+        nextImageButton.setEnabled(false);
+        nextImageButton.setVisibility(View.INVISIBLE);
+        nextImageButton.startAnimation(hideFadeAnimation);
     }
 
     private boolean isHintVisible() {
@@ -104,27 +223,28 @@ public class LevelActivity extends AppCompatActivity {
     }
 
     private void loadProblem() {
-        problem = ProblemGenerator.generate(this, level);
-        problemTextView.setText( problem.getWord() );
+        problems = ProblemGenerator.generateSet(this, level, questionCount);
+        problemTextView.setText( problems.get( questionNo ).getWord() );
         setHint();
     }
 
     private void setHint() {
         String hintText = "";
-        for(int i = 0; i < problem.getHint().size(); i++) {
-            hintText += problem.getHint().get(i);
-            if(i != problem.getHint().size() - 1) hintText += "\n";
+        for(int i = 0; i < problems.get( questionNo ).getHint().size(); i++) {
+            hintText += problems.get( questionNo ).getHint().get(i);
+            if(i != problems.get( questionNo ).getHint().size() - 1) hintText += "\n";
         }
         hintTextView.setText(hintText);
-        Log.d("Hint", hintText);
     }
 
     private boolean isSolved(String s) {
-        return s.equals( problem.getWord() );
+        solved = s.equals( problems.get( questionNo ).getWord() );
+        return solved;
     }
 
     private void resetInput() {
         input.setText("");
+
     }
 
     private void showCongratulations() {
@@ -135,4 +255,8 @@ public class LevelActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onReset() {
+        reset();
+    }
 }

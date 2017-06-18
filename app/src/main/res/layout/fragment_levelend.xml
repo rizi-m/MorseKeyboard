@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/levelend_textview_level"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/general_padding"
+        android:text="Level Complete!"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/general_head_textsize" />
+
+    <TextView
+        android:id="@+id/levelend_textview_newhigh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="NEW HIGH SCORE"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="@dimen/general_head_textsize"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/levelend_textview_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="Score"
+        android:textAlignment="center"
+        android:textColor="@color/blueAccent"
+        android:textSize="@dimen/general_head_textsize" />
+
+    <TextView
+        android:id="@+id/levelend_textview_highscore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="High Score"
+        android:textAlignment="center"
+        android:textColor="@color/blueAccent"
+        android:textSize="@dimen/general_head_textsize" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/levelend_imagebutton_reset"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_margin="@dimen/general_margin"
+            android:layout_weight="1"
+            android:background="@drawable/tap_key"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/levelend_arrow_back" />
+
+        <ImageButton
+            android:id="@+id/levelend_imagebutton_exit"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginBottom="@dimen/general_margin"
+            android:layout_marginRight="@dimen/general_margin"
+            android:layout_marginTop="@dimen/general_margin"
+            android:layout_weight="1"
+            android:background="@drawable/tap_key"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/levelend_x" />
+    </LinearLayout>
+
+</LinearLayout>

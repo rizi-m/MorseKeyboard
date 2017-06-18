@@ -7,17 +7,28 @@
     android:background="@color/white"
     tools:context="com.rizwanmahmood.morsekeyboard.activities.LevelsActivity">
 
+    <TextView
+        android:id="@+id/levels_textview_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/general_padding"
+        android:text="@string/levels_head_text"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/general_head_textsize" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_below="@id/levels_textview_head">
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp">
+            android:layout_marginTop="@dimen/activity_vertical_margin">
 
             <TableRow
                 android:layout_width="match_parent"

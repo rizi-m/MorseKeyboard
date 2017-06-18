@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/levelchooser_textview_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/general_padding"
+        android:text="@string/levelchooser_head_text"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/general_head_textsize" />
+
+    <Spinner
+        android:padding="@dimen/general_padding"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:id="@+id/levelchooser_spinner_levels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tap_key"
+        android:textAlignment="center" />
+
+    <Button
+        android:layout_margin="@dimen/general_margin"
+        android:id="@+id/levelchooser_button_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tap_key"
+        android:textColor="@color/blueAccent"
+
+        android:text="@string/levelchooser_button_ok_text"/>
+
+</LinearLayout>

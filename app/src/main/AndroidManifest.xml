@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name=".MorseKeyboard"
+            android:name=".keyboard.MorseKeyboard"
             android:label="@string/morse_keyboard"
             android:permission="android.permission.BIND_INPUT_METHOD">
             <meta-data
@@ -22,18 +22,21 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.HelpActivity" />
         <activity
-            android:name=".activities.LevelsActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activities.LevelActivity"></activity>
+            android:name=".activities.HelpActivity" />
+        <activity
+            android:name=".activities.LevelsActivity" />
+        <activity
+            android:name=".activities.LevelActivity" />
+        <activity android:name=".activities.SettingsActivity"></activity>
     </application>
 
 </manifest>

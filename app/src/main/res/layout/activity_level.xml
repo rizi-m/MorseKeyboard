@@ -4,22 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rizwanmahmood.morsekeyboard.activities.LevelActivity"
-    android:orientation="vertical">
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.rizwanmahmood.morsekeyboard.activities.LevelActivity">
 
 
     <TextView
-        android:id="@+id/level_textview_text"
+        android:id="@+id/levelend_textview_level"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@color/colorPrimary"
         android:padding="@dimen/general_padding"
-        android:text="Word to type"
+        android:text="Level"
         android:textAlignment="center"
-        android:textSize="@dimen/level_text_textsize"
-        android:textStyle="bold" />
+        android:textColor="@color/white"
+        android:textSize="@dimen/general_head_textsize" />
+
+    <TextView
+        android:id="@+id/level_textview_questions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryLight"
+        android:padding="@dimen/general_padding_half"
+        android:text="Level"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/general_subhead_textsize" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/level_textview_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/general_padding"
+            android:text="Word to type"
+            android:textAlignment="center"
+            android:textColor="@color/blueAccent"
+            android:textSize="@dimen/level_text_textsize"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/level_imagebutton_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/level_textview_text"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/tap_key"
+            android:paddingBottom="@dimen/general_padding"
+            android:paddingLeft="@dimen/level_nextbutton_padding_lr"
+            android:paddingRight="@dimen/level_nextbutton_padding_lr"
+            android:paddingTop="@dimen/general_padding"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/level_notail_right" />
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/level_editText_input"
@@ -32,7 +78,9 @@
         android:ems="10"
         android:hint="Enter here"
         android:inputType="textPersonName"
-        android:padding="@dimen/general_padding" />
+        android:padding="@dimen/general_padding"
+        android:textColor="@color/darkGrey"
+        android:textColorHint="@color/grey" />
 
     <Button
         android:id="@+id/level_button_hinttoggle"
@@ -61,4 +109,5 @@
         android:textSize="@dimen/level_hint_textsize"
         android:textStyle="bold"
         android:visibility="gone" />
+
 </LinearLayout>

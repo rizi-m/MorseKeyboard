@@ -1,7 +1,6 @@
-package com.rizwanmahmood.morsekeyboard.model;
+package com.rizwanmahmood.morsekeyboard.problem;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.rizwanmahmood.morsekeyboard.R;
 
@@ -13,6 +12,8 @@ import java.util.Random;
 
 //class to generate problems
 public class ProblemGenerator {
+
+    public static final int LEVEL_COUNT = 9;
 
     private static String lowercase = "abcdefghijglmnopqrstuvwxyz";
     private static String numbers = "0123456789";
@@ -99,15 +100,23 @@ public class ProblemGenerator {
         return new Problem("");
     }
 
+    public static ArrayList<Problem> generateSet(Context context, int level, int questionCount) {
+        ArrayList<Problem> result = new ArrayList<>();
+        for(int i = 0; i < questionCount; ++i) {
+            result.add( generate(context, level) );
+        }
+        return result;
+    }
+
     //very basic problems with just lower case letters
     private static Problem level1() {
         String word = String.valueOf(lowercase.charAt(random.nextInt(lowercase.length())));
         return new Problem(word);
     }
 
-    //very basic problems with just upper case letters
+    //very basic problems with one character and no hint
     private static Problem level2() {
-        String word = String.valueOf(lowercase.toUpperCase().charAt(random.nextInt(lowercase.length())));
+        String word = String.valueOf(lowercase.charAt(random.nextInt(lowercase.length())));
         return new Problem(word);
     }
 
@@ -115,20 +124,20 @@ public class ProblemGenerator {
     private static Problem level3() {
         String word = "";
         for(int i = 0; i < 2; i++) {
-            word += String.valueOf(lowercase.charAt(random.nextInt(lowercase.length())));
+            word += String.valueOf(lowercase.charAt(random.nextInt(lowercase.length()))).toLowerCase();
         }
         return new Problem(word);
     }
 
     //problems containing 1 digit number
     private static Problem level4() {
-        String word = String.valueOf(numbers.charAt(random.nextInt(numbers.length())));
+        String word = String.valueOf(numbers.charAt(random.nextInt(numbers.length()))).toLowerCase();
         return new Problem(word);
     }
 
     //problems containing 1 special character
     private static Problem level5() {
-        String word = String.valueOf(special.charAt(random.nextInt(special.length())));
+        String word = String.valueOf(special.charAt(random.nextInt(special.length()))).toLowerCase();
         return new Problem(word);
     }
 
@@ -137,14 +146,14 @@ public class ProblemGenerator {
         String word = "";
         int length = (random.nextBoolean()) ? 2 : 3;
         for(int i = 0; i < length; i++) {
-            word += String.valueOf( lowercase.concat( lowercase.toUpperCase() ).charAt( random.nextInt( lowercase.length()*2 ) ) );
+            word += String.valueOf( lowercase.concat( lowercase.toUpperCase() ).charAt( random.nextInt( lowercase.length()*2 ) ) ).toLowerCase();
         }
         return new Problem(word);
     }
 
     //problems with short words
     private static Problem level7() {
-        return new Problem( shortWords.get( random.nextInt( shortWords.size() ) ) );
+        return new Problem( shortWords.get( random.nextInt( shortWords.size() ) ).toLowerCase() );
     }
 
 
@@ -153,14 +162,14 @@ public class ProblemGenerator {
         String word = "";
         int length = 3 + random.nextInt(3);
         for(int i = 0; i < length; i++) {
-            word += String.valueOf( alphanumeric.charAt( random.nextInt( alphanumeric.length() ) ) );
+            word += String.valueOf( alphanumeric.charAt( random.nextInt( alphanumeric.length() ) ) ).toLowerCase();
         }
         return new Problem(word);
     }
 
     //problems with medium length words
     private static Problem level9() {
-        return new Problem( mediumWords.get( random.nextInt( mediumWords.size() ) ) );
+        return new Problem( mediumWords.get( random.nextInt( mediumWords.size() ) ).toLowerCase() );
     }
 
 

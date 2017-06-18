@@ -1,4 +1,4 @@
-package com.rizwanmahmood.morsekeyboard.model;
+package com.rizwanmahmood.morsekeyboard.problem;
 
 import java.util.ArrayList;
 

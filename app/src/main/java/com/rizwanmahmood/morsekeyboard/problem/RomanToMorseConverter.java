@@ -1,4 +1,4 @@
-package com.rizwanmahmood.morsekeyboard.model;
+package com.rizwanmahmood.morsekeyboard.problem;
 
 
 import java.util.ArrayList;
@@ -51,6 +51,7 @@ class RomanToMorseConverter {
 
 
     static ArrayList<String> convert(String word) {
+        word = word.toLowerCase();
         ArrayList<String> conversion = new ArrayList<>();
         for(int i = 0; i < word.length(); i++) {
             String toAdd = romanToMorse.get(String.valueOf(word.charAt(i)).toLowerCase());

@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rizwanmahmood.morsekeyboard.activities.HelpActivity">
+    tools:context="com.rizwanmahmood.morsekeyboard.activities.HelpActivity"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/help_textview_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/general_padding"
+        android:text="@string/help_textview_string_title"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/general_head_textsize"
+        android:layout_alignParentTop="true"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/help_textview_head">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/help_textview_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/help_textview_string_title"
-                android:textAlignment="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/help_title_size" />
 
             <TextView
                 android:id="@+id/help_textview_goto"
@@ -162,4 +166,4 @@
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+</RelativeLayout>

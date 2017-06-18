@@ -6,4 +6,17 @@
     <string name="main_button_string_practice">Practice</string>
     <string name="main_button_string_help">Help</string>
     <string name="help_textview_string_title">Setting up!</string>
+    <string name="main_head_text">Menu</string>
+    <string name="levels_head_text">Choose Difficulty</string>
+    <string name="confirm_head_text">Are you sure?</string>
+    <string name="confirm_button_yes_text">Yes</string>
+    <string name="confirm_button_no_text">No</string>
+    <string name="levelchooser_head_text">Choose Level</string>
+    <string name="levelchooser_button_ok_text">Ok</string>
+
+    <string name="settings_head_text">Settings</string>
+    <string name="settings_button_resetscore_text">Reset Score</string>
+    <string name="settings_button_resetlevelscore_text">Reset Level Score</string>
+
+
 </resources>

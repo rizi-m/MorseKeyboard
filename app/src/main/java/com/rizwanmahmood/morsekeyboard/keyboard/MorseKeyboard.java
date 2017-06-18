@@ -1,4 +1,4 @@
-package com.rizwanmahmood.morsekeyboard;
+package com.rizwanmahmood.morsekeyboard.keyboard;
 
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
@@ -8,9 +8,10 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
-import com.rizwanmahmood.morsesignal.Signal;
-import com.rizwanmahmood.morsesignal.SignalConverter;
-import com.rizwanmahmood.timer.TapTimer;
+import com.rizwanmahmood.morsekeyboard.R;
+import com.rizwanmahmood.morsekeyboard.morsesignal.Signal;
+import com.rizwanmahmood.morsekeyboard.morsesignal.SignalConverter;
+import com.rizwanmahmood.morsekeyboard.timer.TapTimer;
 
 public class MorseKeyboard extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 

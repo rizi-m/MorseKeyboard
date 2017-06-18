@@ -1,4 +1,4 @@
-package com.rizwanmahmood.morsesignal;
+package com.rizwanmahmood.morsekeyboard.morsesignal;
 
 public class Signal {
 

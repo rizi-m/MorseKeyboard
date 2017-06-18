@@ -1,4 +1,4 @@
-package com.rizwanmahmood.morsekeyboard;
+package com.rizwanmahmood.morsekeyboard.keyboard;
 
 import android.content.Context;
 import android.graphics.Canvas;

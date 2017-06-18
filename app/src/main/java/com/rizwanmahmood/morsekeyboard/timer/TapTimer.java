@@ -1,4 +1,4 @@
-package com.rizwanmahmood.timer;
+package com.rizwanmahmood.morsekeyboard.timer;
 
 
 import java.util.Timer;
