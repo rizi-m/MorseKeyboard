@@ -180,7 +180,7 @@ public class MorseKeyboard extends InputMethodService implements KeyboardView.On
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         tapEndTimer.stop();
+        super.onDestroy();
     }
 }
